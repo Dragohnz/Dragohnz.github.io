@@ -1,0 +1,28 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class Aggregate {
+
+	public static Object AggregateDocument(Document Document) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		String result = "";
+		
+		collection.insertOne(Document);
+		
+		var myDocument = collection.find(Document).first();
+
+	    System.out.print(myDocument);
+	    
+	    return result;
+	}
+}

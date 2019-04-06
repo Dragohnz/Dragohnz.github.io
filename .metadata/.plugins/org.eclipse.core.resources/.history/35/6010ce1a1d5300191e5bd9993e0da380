@@ -1,0 +1,26 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class FindNum {
+
+	public static Object FindNumber(float fl1, float fl2) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		String result = "";
+		
+		var myDocument = collection.find(Document).count();
+
+	    System.out.print(myDocument);
+	    
+	    return result;
+	}
+}

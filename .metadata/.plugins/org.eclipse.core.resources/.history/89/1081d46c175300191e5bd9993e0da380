@@ -1,0 +1,28 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class Update {
+	
+
+	public static Object UpdateDocument(Document Document1, Document Document2) {
+		
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		String result = "";
+		
+		collection.updateOne(Document1, Document2);
+		
+		var myDocument = collection.find(Document1).first();
+
+	    System.out.print(myDocument);
+	    
+	    return result;
+	}
+}

@@ -1,0 +1,193 @@
+package Main;
+import java.io.IOException;
+import java.util.Scanner;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import ClassFiles.Insert;
+import org.bson.Document;
+import org.xml.sax.SAXException;
+
+class StockMarket{
+	
+  
+    public static void main(String args[]) throws IOException, ParserConfigurationException, SAXException{
+		  
+	    //set up scanner
+	    Scanner menu = new Scanner(System.in);
+	    String selection = "";
+	    //String result = "";
+	    
+	    //Loop for the menu and selections
+	    while (selection != "e") {
+	    	      
+	        //Menu print out
+	        System.out.println("\nMain Menu (enter the letter next to the selection to choose):\n");
+	        System.out.println("i. Insert");
+	        System.out.println("u. Update");
+	        System.out.println("d. Delete");
+	        System.out.println("n. Find Number");
+	        System.out.println("s. Find String");
+	        System.out.println("a. Aggregate");
+	        System.out.println("e. Exit");
+	      
+	        //User input option
+	        System.out.println("\nType in the letter of the desired action: ");
+	        selection = menu.nextLine();
+	      
+	        //Insert
+	        if (selection.contentEquals("i")) {
+	    	    System.out.println("\nYou chose Insert\n");
+	    	  
+	    	    //Start by entering the key or b to go back
+	    	    System.out.println("Enter in a key in quotes (Will be a total of 4 inputs), or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    	    	//Get the rest of the inputs, they already avoided "b" for the first one so continue assuming they do not want to exit.
+	    		    System.out.println("\nNow enter in a value in quotes: ");
+	    		    String input2 = menu.nextLine();
+	    		  
+	    		    System.out.println("\nNow enter in a second key in quotes: ");
+	    		    String input3 = menu.nextLine();
+	    		  
+	    		    System.out.println("\nNow enter in a second value in quotes: ");
+	    		    String input4 = menu.nextLine();
+	    		    
+	    		    //Put the strings into document format
+	    		    Document docI = new Document(input, input2).append(input3, input4);
+	    		    
+	    		    //Print out results
+	    		    System.out.print(ClassFiles.Insert.InsertDocument(docI));
+				  
+	    		  
+	    	    }
+	    		  
+	        }
+	      
+	        //Update
+	        else if (selection.contentEquals("u")) {
+	    	    System.out.println("\nYou chose Update\n");
+	    	  
+	    	    //Start by entering the key or b to go back
+	    	    System.out.println("Enter in the query key to update in quotes, or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    	    	//Get the rest of the inputs, they already avoided "b" for the first one so continue assuming they do not want to exit.
+	    		    System.out.println("\nNow enter in the query value in quotes: ");
+	    		    String input2 = menu.nextLine();
+	    		  
+	    		    System.out.println("\nNow enter in the updated key in quotes: ");
+	    		    String input3 = menu.nextLine();
+	    		  
+	    		    System.out.println("\nNow enter in the updated value in quotes: ");
+	    		    String input4 = menu.nextLine();
+	    		    
+	    		    //Put the inputs into document format
+	    		    Document docU1 = new Document(input, input2).append(input3, input4);
+	    		    Document docU2 = new Document(input3, input4);
+	    		    Document docUpdate = docU1.append("$set", docU2);
+	    		    
+	    		    System.out.println(ClassFiles.Update.UpdateDocument(docUpdate));
+	    		  
+	    	    }
+	    	  
+	        }
+	      
+	        //Delete
+	        else if (selection.contentEquals("d")) {
+	    	    System.out.println("\nYou chose Delete\n");
+	    	  
+	    	    //Start by entering the key or b to go back
+	    	    System.out.println("Enter in a key to delete in quotes, or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    		    System.out.println("\nNow enter in the value to delete in quotes: ");
+	    		    String input2 = menu.nextLine();
+	    		  
+	    		    String document = "{" + input + ":" + input2 + "}";
+	    		    //inserts = json.loads(document);
+	    		    System.out.println(document);
+	    		  
+	    	    }
+	        }
+	      
+	        //Find Number
+	        else if (selection.contentEquals("n")) {
+	    	    System.out.println("\nYou chose Find Number\n");
+	    	  
+	    	    //Start by entering in a high number or b to go back
+	    	    System.out.println("Enter in a high numerical value, or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    		  
+	    	    }
+	        }  
+	      
+	        //Find String
+	        else if (selection.contentEquals("s")) {
+	    	    System.out.println("\nYou chose Find String\n");
+	    	  
+	    	    //Start by entering in a string or b to go back
+	    	    System.out.println("Enter in a string, or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    		  
+	    	    }
+	        }
+	      
+	        //Aggregate
+	        else if (selection.contentEquals("a")) {
+	    	    System.out.println("\nYou chose Aggregate\n");
+	    	  
+	    	    //Start by entering the key or b to go back
+	    	    System.out.println("Enter in a value for key Sector to aggregate, enter it in quotes, or b to go back: ");
+	    	    String input = menu.nextLine();
+	    	  
+	    	    if (input.equals("b")) {
+	    		    //Go back
+	    		    System.out.println("\nBack to the Main Menu\n");
+	    	    }
+	    	    else {
+	    		  
+	    	    }
+	        }
+	      
+	        //Exit loop
+	        else if (selection.contentEquals("e")) {
+	    	    System.out.println("\nGood Bye");
+	    	    menu.close();
+	    	    break;
+	        }
+	      
+	        //If user did not input a correct selection, bring them through the loop again
+	        else {
+	    	    System.out.println("\nPlease make a selection above.\n");
+	        }
+	      }
+	  }
+}

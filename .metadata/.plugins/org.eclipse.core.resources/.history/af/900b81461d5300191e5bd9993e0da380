@@ -1,0 +1,29 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class FindNum {
+
+	public static Object FindNumber(float fl1, float fl2) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		String result = "";
+		
+		Document query = new Document("$gte", fl2).append("$lte", fl1);
+		Document query2 = new Document("50-Day Simple Moving Average", query);
+		
+		long count = collection.count(query2);
+
+	    System.out.print(count);
+	    
+	    return result;
+	}
+}

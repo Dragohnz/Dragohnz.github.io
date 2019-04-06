@@ -1,0 +1,33 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class Delete {	
+	
+	public static Object DeleteDocument(String input, String input2) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		//Put the inputs into document format
+	    Document doc = new Document(input, input2);
+		
+		//Call the delete command
+		collection.deleteMany(doc);
+		
+		//Try and find the document we deleted
+		var myDocument = collection.find(doc).first();
+
+		//Print out the result
+	    System.out.print("Your result is: " + myDocument + "  -->(If null then that means it was successfull)");
+	    
+	    return myDocument;
+	}
+
+}

@@ -1,0 +1,35 @@
+package ClassFiles;
+
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+
+public class FindStr {
+	
+	public static Object FindString(String input) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		
+		Document doc1 = new Document("Industry", input);
+		Document doc2 = new Document();
+		doc2.put ("Ticker", 1);
+		
+		var myDoc = collection.find(doc1).first();
+		
+		System.out.println(myDoc);
+		//while (cursor.hasNext()) {
+		//	System.out.println(cursor.next());
+		//}
+		
+	    
+	    return myDoc;
+	}
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.swing.text.Document"/>
+    <fullyQualifiedTypeName name="ClassFiles.Insert"/>
+    <fullyQualifiedTypeName name="ClassFiles.MongoClass"/>
+    <fullyQualifiedTypeName name="org.bson.Document"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="java.io.StringReader"/>
+    <fullyQualifiedTypeName name="jdk.internal.org.xml.sax.InputSource"/>
+    <fullyQualifiedTypeName name="ClassFiles.StringtoDocument"/>
+    <fullyQualifiedTypeName name="com.mongodb.DBObject"/>
+    <fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
+    <fullyQualifiedTypeName name="com.mongodb.util.JSON"/>
+    <fullyQualifiedTypeName name="com.mongodb.client.model.Filters"/>
+    <fullyQualifiedTypeName name="ClassFiles.Update"/>
+    <fullyQualifiedTypeName name="ClassFiles.Delete"/>
+    <fullyQualifiedTypeName name="ClassFiles.FindNum"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.mongodb.client.AggregateIterable"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="com.mongodb.client.MongoCursor"/>
+</qualifiedTypeNameHistroy>

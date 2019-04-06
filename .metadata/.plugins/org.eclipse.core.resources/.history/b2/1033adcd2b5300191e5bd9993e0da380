@@ -1,0 +1,52 @@
+package ClassFiles;
+
+import java.util.ArrayList;
+import org.bson.Document;
+import com.mongodb.MongoClient;
+import com.mongodb.client.AggregateIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+public class Aggregate {
+
+	public static Object AggregateDocument(String input) {
+		
+		//Get mongo set up
+		@SuppressWarnings("resource")
+		MongoClient mongoClient = new MongoClient("localhost", 27017);
+		MongoDatabase database = mongoClient.getDatabase("market");
+		MongoCollection<Document> collection = database.getCollection("stocks");
+		
+		String result = "";
+		
+		//Set up the Match
+		Document match = new Document("$match", new Document("Sector", input));
+		//Set up the Project
+		Document project1 = new Document("_id", 1);
+		Document project2 = project1.append("Shares Outstanding", 1);
+		Document project3 = project2.append("Industry", 1);
+		Document project4 = project3.append("Sector", 1);
+		Document project = new Document("$project", project4);
+		//Set up the Group
+		Document group1 = new Document("_id", "$Industry");
+		Document group2 = group1.append("Total Outstanding Shares", new Document("$sum", "$Shares Outstanding"));
+		Document group = new Document("$group", group2);
+		
+		//Put Match, Project, and Group into an ArrayList
+		ArrayList<Document> aggregation = new ArrayList<Document>();
+		aggregation.add(match);
+		aggregation.add(project);
+		aggregation.add(group);
+		
+		//Call the aggregate command
+		AggregateIterable<Document> agg = collection.aggregate(aggregation);
+
+		//Print out the result
+		for (Document aggs : agg)
+		{
+		    System.out.println(aggs);
+		}
+	    
+	    return result;
+	}
+}

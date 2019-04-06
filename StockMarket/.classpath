@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/aspau/Downloads/bson-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aspau/Downloads/mongodb-driver-core-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aspau/Downloads/mongodb-driver-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aspau/Downloads/org.json-20130603.jar/org.json-20130603.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
